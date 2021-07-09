@@ -5,10 +5,11 @@
 Monorepoitory for all Javascript Projects 
 
 ## Projects
-1. everyqa-mocha
-2. everyqa-jest
-3. everyqa-jasmine
-4. everyqa-cucumberjs
-5. everyqa-cypress
-6. everyqa-testcafe
-7. everyqa-playwright
+1. [everyqaio](https://github.com/everyqa-tms/everyqa-javascript/tree/main/everyqa-io "everyqaio") - JavaScript Api Client
+2. everyqa-mocha
+3. everyqa-jest
+4. everyqa-jasmine
+5. everyqa-cucumberjs
+6. everyqa-cypress
+7. everyqa-testcafe
+8. everyqa-playwright
