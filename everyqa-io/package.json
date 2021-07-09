@@ -1,0 +1,47 @@
+{
+  "name": "everyqaio",
+  "version": "v1.0.0",
+  "description": "EveryQA TMS Javascript Api Client",
+  "main": "./dist/everyqaio.js",
+  "types": "./dist/everyqaio.d.ts",
+  "homepage": "https://github.com/everyqa-tms/everyqa-javascript",
+  "bugs": {
+    "url": "https://github.com/everyqa-tms/everyqa-javascriptissues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/everyqa-tms/everyqa-javascript.git"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "dev": "npm run lint && tsc",
+    "dev:watch": "nodemon --exec 'npm run dev || exit 1'",
+    "lint": "eslint --fix src/**",
+    "build": "npm run clean && npm run dev",
+    "clean": "rm -rf dist || true"
+  },
+  "author": {
+    "name": "Mike Maciejewski",
+    "email": "macmisha1990@gmail.com"
+  },
+  "devDependencies": {
+    "@hutson/npm-deploy-git-tag": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^3.0.2",
+    "@typescript-eslint/eslint-plugin-tslint": "^3.0.2",
+    "@typescript-eslint/parser": "^3.0.2",
+    "eslint": "^7.1.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-jsdoc": "^26.0.1",
+    "eslint-plugin-prefer-arrow": "^1.2.1",
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.4",
+    "typescript": "^3.9.3",
+    "uglify-js": "^3.4.9"
+  },
+  "dependencies": {
+    "portable-fetch": "^3.0.0",
+    "url": "^0.11.0"
+  }
+}
