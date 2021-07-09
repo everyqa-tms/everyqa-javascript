@@ -1,12 +1,12 @@
 {
   "name": "everyqaio",
-  "version": "v1.0.0",
+  "version": "v1.1.1",
   "description": "EveryQA TMS Javascript Api Client",
   "main": "./dist/everyqaio.js",
   "types": "./dist/everyqaio.d.ts",
   "homepage": "https://github.com/everyqa-tms/everyqa-javascript",
   "bugs": {
-    "url": "https://github.com/everyqa-tms/everyqa-javascriptissues"
+    "url": "https://github.com/everyqa-tms/everyqa-javascript/issues"
   },
   "repository": {
     "type": "git",
@@ -15,11 +15,15 @@
   "engines": {
     "node": ">=10"
   },
+  "keywords": [
+    "everyqa",
+    "api",
+    "client"
+  ],
   "scripts": {
-    "dev": "npm run lint && tsc",
-    "dev:watch": "nodemon --exec 'npm run dev || exit 1'",
     "lint": "eslint --fix src/**",
-    "build": "npm run clean && npm run dev",
+    "build": "rimraf dist && npm run lint && tsc",
+    "postbuild": "cp package.json dist",
     "clean": "rm -rf dist || true"
   },
   "author": {
