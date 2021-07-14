@@ -1,4 +1,3 @@
-/// <reference path="./custom.d.ts" />
 /* eslint-disable */
 /**
  * EveryQA Public API
@@ -13,9 +12,8 @@
  * Do not edit the class manually.
  */
 
-
-import * as portableFetch from 'portable-fetch';
-import * as url from 'url';
+import portableFetch from 'portable-fetch';
+import url from 'url';
 import { Configuration } from './configuration';
 
 const BASE_PATH = 'https://api.everyqa.io/v1'.replace(/\/+$/, '');
