@@ -11,9 +11,9 @@
  */
 
 
+import * as url from 'url';
 import { Configuration } from './configuration';
 import portableFetch from 'portable-fetch';
-import url from 'url';
 
 const BASE_PATH = 'https://api.everyqa.io/v1'.replace(/\/+$/, '');
 

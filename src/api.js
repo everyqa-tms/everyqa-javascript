@@ -14,12 +14,10 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -84,7 +82,7 @@ exports.RequiredError = RequiredError;
  *
  * @export
  */
-var ActionApiFetchParamCreator = function (configuration) {
+exports.ActionApiFetchParamCreator = function (configuration) {
     return {
         /**
          * Create test action by caseID
@@ -182,13 +180,12 @@ var ActionApiFetchParamCreator = function (configuration) {
         },
     };
 };
-exports.ActionApiFetchParamCreator = ActionApiFetchParamCreator;
 /**
  * ActionApi - functional programming interface
  *
  * @export
  */
-var ActionApiFp = function (configuration) {
+exports.ActionApiFp = function (configuration) {
     return {
         /**
          * Create test action by caseID
@@ -241,13 +238,12 @@ var ActionApiFp = function (configuration) {
         },
     };
 };
-exports.ActionApiFp = ActionApiFp;
 /**
  * ActionApi - factory interface
  *
  * @export
  */
-var ActionApiFactory = function (configuration, fetch, basePath) {
+exports.ActionApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
          * Create test action by caseID
@@ -276,7 +272,6 @@ var ActionApiFactory = function (configuration, fetch, basePath) {
         },
     };
 };
-exports.ActionApiFactory = ActionApiFactory;
 /**
  * ActionApi - object-oriented interface
  *
@@ -324,7 +319,7 @@ exports.ActionApi = ActionApi;
  *
  * @export
  */
-var CasesApiFetchParamCreator = function (configuration) {
+exports.CasesApiFetchParamCreator = function (configuration) {
     return {
         /**
          * Get list of test-run by projectID
@@ -400,13 +395,12 @@ var CasesApiFetchParamCreator = function (configuration) {
         },
     };
 };
-exports.CasesApiFetchParamCreator = CasesApiFetchParamCreator;
 /**
  * CasesApi - functional programming interface
  *
  * @export
  */
-var CasesApiFp = function (configuration) {
+exports.CasesApiFp = function (configuration) {
     return {
         /**
          * Get list of test-run by projectID
@@ -456,13 +450,12 @@ var CasesApiFp = function (configuration) {
         },
     };
 };
-exports.CasesApiFp = CasesApiFp;
 /**
  * CasesApi - factory interface
  *
  * @export
  */
-var CasesApiFactory = function (configuration, fetch, basePath) {
+exports.CasesApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
          * Get list of test-run by projectID
@@ -488,7 +481,6 @@ var CasesApiFactory = function (configuration, fetch, basePath) {
         },
     };
 };
-exports.CasesApiFactory = CasesApiFactory;
 /**
  * CasesApi - object-oriented interface
  *
@@ -533,7 +525,7 @@ exports.CasesApi = CasesApi;
  *
  * @export
  */
-var ProjectApiFetchParamCreator = function (configuration) {
+exports.ProjectApiFetchParamCreator = function (configuration) {
     return {
         /**
          * Get project info by projectID
@@ -573,13 +565,12 @@ var ProjectApiFetchParamCreator = function (configuration) {
         },
     };
 };
-exports.ProjectApiFetchParamCreator = ProjectApiFetchParamCreator;
 /**
  * ProjectApi - functional programming interface
  *
  * @export
  */
-var ProjectApiFp = function (configuration) {
+exports.ProjectApiFp = function (configuration) {
     return {
         /**
          * Get project info by projectID
@@ -606,13 +597,12 @@ var ProjectApiFp = function (configuration) {
         },
     };
 };
-exports.ProjectApiFp = ProjectApiFp;
 /**
  * ProjectApi - factory interface
  *
  * @export
  */
-var ProjectApiFactory = function (configuration, fetch, basePath) {
+exports.ProjectApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
          * Get project info by projectID
@@ -627,7 +617,6 @@ var ProjectApiFactory = function (configuration, fetch, basePath) {
         },
     };
 };
-exports.ProjectApiFactory = ProjectApiFactory;
 /**
  * ProjectApi - object-oriented interface
  *
@@ -660,7 +649,7 @@ exports.ProjectApi = ProjectApi;
  *
  * @export
  */
-var RunsApiFetchParamCreator = function (configuration) {
+exports.RunsApiFetchParamCreator = function (configuration) {
     return {
         /**
          * Close test run
@@ -878,13 +867,12 @@ var RunsApiFetchParamCreator = function (configuration) {
         },
     };
 };
-exports.RunsApiFetchParamCreator = RunsApiFetchParamCreator;
 /**
  * RunsApi - functional programming interface
  *
  * @export
  */
-var RunsApiFp = function (configuration) {
+exports.RunsApiFp = function (configuration) {
     return {
         /**
          * Close test run
@@ -1008,13 +996,12 @@ var RunsApiFp = function (configuration) {
         },
     };
 };
-exports.RunsApiFp = RunsApiFp;
 /**
  * RunsApi - factory interface
  *
  * @export
  */
-var RunsApiFactory = function (configuration, fetch, basePath) {
+exports.RunsApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
          * Close test run
@@ -1078,7 +1065,6 @@ var RunsApiFactory = function (configuration, fetch, basePath) {
         },
     };
 };
-exports.RunsApiFactory = RunsApiFactory;
 /**
  * RunsApi - object-oriented interface
  *
@@ -1164,7 +1150,7 @@ exports.RunsApi = RunsApi;
  *
  * @export
  */
-var TestsApiFetchParamCreator = function (configuration) {
+exports.TestsApiFetchParamCreator = function (configuration) {
     return {
         /**
          * Create test by caseID
@@ -1246,13 +1232,12 @@ var TestsApiFetchParamCreator = function (configuration) {
         },
     };
 };
-exports.TestsApiFetchParamCreator = TestsApiFetchParamCreator;
 /**
  * TestsApi - functional programming interface
  *
  * @export
  */
-var TestsApiFp = function (configuration) {
+exports.TestsApiFp = function (configuration) {
     return {
         /**
          * Create test by caseID
@@ -1303,13 +1288,12 @@ var TestsApiFp = function (configuration) {
         },
     };
 };
-exports.TestsApiFp = TestsApiFp;
 /**
  * TestsApi - factory interface
  *
  * @export
  */
-var TestsApiFactory = function (configuration, fetch, basePath) {
+exports.TestsApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
          * Create test by caseID
@@ -1336,7 +1320,6 @@ var TestsApiFactory = function (configuration, fetch, basePath) {
         },
     };
 };
-exports.TestsApiFactory = TestsApiFactory;
 /**
  * TestsApi - object-oriented interface
  *
@@ -1382,7 +1365,7 @@ exports.TestsApi = TestsApi;
  *
  * @export
  */
-var UsersApiFetchParamCreator = function (configuration) {
+exports.UsersApiFetchParamCreator = function (configuration) {
     return {
         /**
          * Get current user info
@@ -1452,13 +1435,12 @@ var UsersApiFetchParamCreator = function (configuration) {
         },
     };
 };
-exports.UsersApiFetchParamCreator = UsersApiFetchParamCreator;
 /**
  * UsersApi - functional programming interface
  *
  * @export
  */
-var UsersApiFp = function (configuration) {
+exports.UsersApiFp = function (configuration) {
     return {
         /**
          * Get current user info
@@ -1507,13 +1489,12 @@ var UsersApiFp = function (configuration) {
         },
     };
 };
-exports.UsersApiFp = UsersApiFp;
 /**
  * UsersApi - factory interface
  *
  * @export
  */
-var UsersApiFactory = function (configuration, fetch, basePath) {
+exports.UsersApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
          * Get current user info
@@ -1538,7 +1519,6 @@ var UsersApiFactory = function (configuration, fetch, basePath) {
         },
     };
 };
-exports.UsersApiFactory = UsersApiFactory;
 /**
  * UsersApi - object-oriented interface
  *
