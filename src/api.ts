@@ -315,7 +315,7 @@ export interface ModelResultToTestDto {
      * @type {number}
      * @memberof ModelResultToTestDto
      */
-    caseId?: number;
+    run_id?: number;
     /**
      *
      * @type {string}
@@ -327,7 +327,7 @@ export interface ModelResultToTestDto {
      * @type {number}
      * @memberof ModelResultToTestDto
      */
-    statusId?: number;
+    status_id?: number;
 }
 
 /**
@@ -512,10 +512,10 @@ export interface TestrunCreateTestRunDto {
     name?: string;
     /**
      *
-     * @type {string}
+     * @type {number}
      * @memberof TestrunCreateTestRunDto
      */
-    sprint_id?: string;
+    sprint_id?: number;
 }
 
 /**
@@ -580,10 +580,10 @@ export interface TestrunTestRun {
     project_id?: string;
     /**
      *
-     * @type {string}
+     * @type {number}
      * @memberof TestrunTestRun
      */
-    sprint_id?: string;
+    sprint_id?: number;
     /**
      *
      * @type {string}
@@ -618,10 +618,10 @@ export interface TestrunUpdateRunDto {
     name?: string;
     /**
      *
-     * @type {string}
+     * @type {number}
      * @memberof TestrunUpdateRunDto
      */
-    sprint_id?: string;
+    sprint_id?: number;
     /**
      *
      * @type {string}
@@ -692,16 +692,28 @@ export const ActionApiFetchParamCreator = function(configuration?: Configuration
          * Create test action by caseID
          *
          * @summary Create test action by Case ID
+         * @param {string} project_id ID of project
+         * @param {number} case_id ID of run
          * @param {ModelResultToTestDto} body Result Model
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createActionByCaseId(body: ModelResultToTestDto, options: any = {}): FetchArgs {
+        createActionByCaseId(project_id: string, case_id: number, body: ModelResultToTestDto, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createActionByCaseId.');
+            }
+            // verify required parameter 'case_id' is not null or undefined
+            if (case_id === null || case_id === undefined) {
+                throw new RequiredError('case_id','Required parameter case_id was null or undefined when calling createActionByCaseId.');
+            }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createActionByCaseId.');
             }
-            const localVarPath = '/actions';
+            const localVarPath = '/projects/{project_id}/cases/{case_id}/actions'
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
+                .replace(`{${'case_id'}}`, encodeURIComponent(String(case_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -802,12 +814,14 @@ export const ActionApiFp = function(configuration?: Configuration) {
          * Create test action by caseID
          *
          * @summary Create test action by Case ID
+         * @param {string} project_id ID of project
+         * @param {number} case_id ID of run
          * @param {ModelResultToTestDto} body Result Model
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createActionByCaseId(body: ModelResultToTestDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ActionAction> {
-            const localVarFetchArgs = ActionApiFetchParamCreator(configuration).createActionByCaseId(body, options);
+        createActionByCaseId(project_id: string, case_id: number, body: ModelResultToTestDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ActionAction> {
+            const localVarFetchArgs = ActionApiFetchParamCreator(configuration).createActionByCaseId(project_id, case_id, body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -851,12 +865,14 @@ export const ActionApiFactory = function(configuration?: Configuration, fetch?: 
          * Create test action by caseID
          *
          * @summary Create test action by Case ID
+         * @param {string} project_id ID of project
+         * @param {number} case_id ID of run
          * @param {ModelResultToTestDto} body Result Model
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createActionByCaseId(body: ModelResultToTestDto, options?: any) {
-            return ActionApiFp(configuration).createActionByCaseId(body, options)(fetch, basePath);
+        createActionByCaseId(project_id: string, case_id: number, body: ModelResultToTestDto, options?: any) {
+            return ActionApiFp(configuration).createActionByCaseId(project_id, case_id, body, options)(fetch, basePath);
         },
         /**
          * Create test action by  testID
@@ -887,13 +903,15 @@ export class ActionApi extends BaseAPI {
      * Create test action by caseID
      *
      * @summary Create test action by Case ID
+     * @param {string} project_id ID of project
+     * @param {number} case_id ID of run
      * @param {ModelResultToTestDto} body Result Model
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApi
      */
-    public createActionByCaseId(body: ModelResultToTestDto, options?: any) {
-        return ActionApiFp(this.configuration).createActionByCaseId(body, options)(this.fetch, this.basePath);
+    public createActionByCaseId(project_id: string, case_id: number, body: ModelResultToTestDto, options?: any) {
+        return ActionApiFp(this.configuration).createActionByCaseId(project_id, case_id, body, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -1784,12 +1802,12 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(run_id: number, options: any = {}): FetchArgs {
+        getTestsListByRunId(project_id: number, run_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
                 throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling getTestsListByRunId.');
             }
-            const localVarPath = '/tests/list/run/:run_id'
+            const localVarPath = '/projects/{project_id}/runs/{run_id}/tests'
                 .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);

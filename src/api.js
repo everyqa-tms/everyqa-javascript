@@ -23,13 +23,32 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersApi = exports.UsersApiFactory = exports.UsersApiFp = exports.UsersApiFetchParamCreator = exports.TestsApi = exports.TestsApiFactory = exports.TestsApiFp = exports.TestsApiFetchParamCreator = exports.RunsApi = exports.RunsApiFactory = exports.RunsApiFp = exports.RunsApiFetchParamCreator = exports.ProjectApi = exports.ProjectApiFactory = exports.ProjectApiFp = exports.ProjectApiFetchParamCreator = exports.CasesApi = exports.CasesApiFactory = exports.CasesApiFp = exports.CasesApiFetchParamCreator = exports.ActionApi = exports.ActionApiFactory = exports.ActionApiFp = exports.ActionApiFetchParamCreator = exports.RequiredError = exports.BaseAPI = exports.COLLECTION_FORMATS = void 0;
+var url = __importStar(require("url"));
 var portable_fetch_1 = __importDefault(require("portable-fetch"));
-var url_1 = __importDefault(require("url"));
 var BASE_PATH = 'https://api.everyqa.io/v1'.replace(/\/+$/, '');
 /**
  *
@@ -99,7 +118,7 @@ exports.ActionApiFetchParamCreator = function (configuration) {
                 throw new RequiredError('body', 'Required parameter body was null or undefined when calling createActionByCaseId.');
             }
             var localVarPath = '/actions';
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -118,7 +137,7 @@ exports.ActionApiFetchParamCreator = function (configuration) {
             var needsSerialization = ('ModelResultToTestDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -155,7 +174,7 @@ exports.ActionApiFetchParamCreator = function (configuration) {
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)))
                 .replace("{" + 'run_id' + "}", encodeURIComponent(String(run_id)))
                 .replace("{" + 'test_id' + "}", encodeURIComponent(String(test_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -174,7 +193,7 @@ exports.ActionApiFetchParamCreator = function (configuration) {
             var needsSerialization = ('ModelAddActionToTestDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -337,7 +356,7 @@ exports.CasesApiFetchParamCreator = function (configuration) {
             }
             var localVarPath = '/projects/{project_id}/cases'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -353,7 +372,7 @@ exports.CasesApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -373,7 +392,7 @@ exports.CasesApiFetchParamCreator = function (configuration) {
             }
             var localVarPath = '/projects/{project_id}/cases/{case_id}'
                 .replace("{" + 'case_id' + "}", encodeURIComponent(String(case_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -389,7 +408,7 @@ exports.CasesApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -543,7 +562,7 @@ exports.ProjectApiFetchParamCreator = function (configuration) {
             }
             var localVarPath = '/projects/{project_id}'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -559,7 +578,7 @@ exports.ProjectApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -673,7 +692,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             var localVarPath = '/projects/{project_id}/runs/{run_id}/close'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)))
                 .replace("{" + 'run_id' + "}", encodeURIComponent(String(run_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -689,7 +708,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -714,7 +733,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             }
             var localVarPath = '/projects/{project_id}/runs'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -733,7 +752,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             var needsSerialization = ('TestrunCreateTestRunDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -753,7 +772,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             }
             var localVarPath = '/projects/{project_id}/runs'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -769,7 +788,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -795,7 +814,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             var localVarPath = '/projects/{project_id}/runs/{run_id}'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)))
                 .replace("{" + 'run_id' + "}", encodeURIComponent(String(run_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -811,7 +830,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -842,7 +861,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             var localVarPath = '/projects/{project_id}/runs/{run_id}'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)))
                 .replace("{" + 'run_id' + "}", encodeURIComponent(String(run_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -861,7 +880,7 @@ exports.RunsApiFetchParamCreator = function (configuration) {
             var needsSerialization = ('TestrunUpdateRunDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -1174,7 +1193,7 @@ exports.TestsApiFetchParamCreator = function (configuration) {
             var localVarPath = '/projects/{project_id}/runs/{run_id}/tests'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)))
                 .replace("{" + 'run_id' + "}", encodeURIComponent(String(run_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -1190,7 +1209,7 @@ exports.TestsApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -1210,7 +1229,7 @@ exports.TestsApiFetchParamCreator = function (configuration) {
             }
             var localVarPath = '/tests/list/run/:run_id'
                 .replace("{" + 'run_id' + "}", encodeURIComponent(String(run_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -1226,7 +1245,7 @@ exports.TestsApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -1377,7 +1396,7 @@ exports.UsersApiFetchParamCreator = function (configuration) {
         user: function (options) {
             if (options === void 0) { options = {}; }
             var localVarPath = '/users';
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -1393,7 +1412,7 @@ exports.UsersApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
@@ -1413,7 +1432,7 @@ exports.UsersApiFetchParamCreator = function (configuration) {
             }
             var localVarPath = '/users/{user_id}'
                 .replace("{" + 'user_id' + "}", encodeURIComponent(String(user_id)));
-            var localVarUrlObj = url_1.default.parse(localVarPath, true);
+            var localVarUrlObj = url.parse(localVarPath, true);
             var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
@@ -1429,7 +1448,7 @@ exports.UsersApiFetchParamCreator = function (configuration) {
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             return {
-                url: url_1.default.format(localVarUrlObj),
+                url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
             };
         },
