@@ -1,8 +1,6 @@
-/* eslint-disable */
 /**
  * EveryQA Public API
- * Documentation for EveryQA Public API # Authentication
- * EveryQA Public API offers only one form of authentication: - Bearer API Token
+ * Documentation for EveryQA Public API # Authentication  EveryQA Public API offers only one form of authentication: - Bearer API Token
  *
  * OpenAPI spec version: 0.1
  * Contact: support@everyqa.io
@@ -12,9 +10,10 @@
  * Do not edit the class manually.
  */
 
+
+import { Configuration } from './configuration';
 import portableFetch from 'portable-fetch';
 import url from 'url';
-import { Configuration } from './configuration';
 
 const BASE_PATH = 'https://api.everyqa.io/v1'.replace(/\/+$/, '');
 
@@ -52,8 +51,9 @@ export interface FetchArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-    protected configuration: Configuration = {};
-    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch) {
+    protected configuration!: Configuration;
+
+    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected fetch: FetchAPI = portableFetch as FetchAPI) {
         if (configuration) {
             this.configuration = configuration;
             this.basePath = configuration.basePath || this.basePath;
@@ -68,7 +68,7 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-    name: string = 'RequiredError';
+    name = 'RequiredError';
     constructor(public field: string, msg?: string) {
         super(msg);
     }
@@ -85,19 +85,19 @@ export interface ActionAction {
      * @type {number}
      * @memberof ActionAction
      */
-    createdAt?: number;
+    created_at?: number;
     /**
      *
      * @type {string}
      * @memberof ActionAction
      */
-    createdBy?: string;
+    created_by?: string;
     /**
      *
      * @type {number}
      * @memberof ActionAction
      */
-    deletedAt?: number;
+    deleted_at?: number;
     /**
      *
      * @type {number}
@@ -115,19 +115,19 @@ export interface ActionAction {
      * @type {number}
      * @memberof ActionAction
      */
-    statusId?: number;
+    status_id?: number;
     /**
      *
      * @type {number}
      * @memberof ActionAction
      */
-    testId?: number;
+    test_id?: number;
     /**
      *
      * @type {number}
      * @memberof ActionAction
      */
-    updatedAt?: number;
+    updated_at?: number;
 }
 
 /**
@@ -141,31 +141,31 @@ export interface ExecutionExecution {
      * @type {string}
      * @memberof ExecutionExecution
      */
-    assignedTo?: string;
+    assigned_to?: string;
     /**
      *
      * @type {number}
      * @memberof ExecutionExecution
      */
-    caseId?: number;
+    case_id?: number;
     /**
      *
      * @type {string}
      * @memberof ExecutionExecution
      */
-    createdAt?: string;
+    created_at?: string;
     /**
      *
      * @type {string}
      * @memberof ExecutionExecution
      */
-    createdBy?: string;
+    created_by?: string;
     /**
      *
      * @type {string}
      * @memberof ExecutionExecution
      */
-    deletedAt?: string;
+    deleted_at?: string;
     /**
      *
      * @type {number}
@@ -177,7 +177,7 @@ export interface ExecutionExecution {
      * @type {string}
      * @memberof ExecutionExecution
      */
-    expectedResult?: string;
+    expected_result?: string;
     /**
      *
      * @type {number}
@@ -189,7 +189,7 @@ export interface ExecutionExecution {
      * @type {number}
      * @memberof ExecutionExecution
      */
-    innerId?: number;
+    inner_id?: number;
     /**
      *
      * @type {string}
@@ -201,7 +201,7 @@ export interface ExecutionExecution {
      * @type {string}
      * @memberof ExecutionExecution
      */
-    networkId?: string;
+    network_id?: string;
     /**
      *
      * @type {number}
@@ -225,31 +225,31 @@ export interface ExecutionExecution {
      * @type {string}
      * @memberof ExecutionExecution
      */
-    projectId?: string;
+    project_id?: string;
     /**
      *
      * @type {number}
      * @memberof ExecutionExecution
      */
-    runId?: number;
+    run_id?: number;
     /**
      *
      * @type {number}
      * @memberof ExecutionExecution
      */
-    sectionId?: number;
+    section_id?: number;
     /**
      *
      * @type {string}
      * @memberof ExecutionExecution
      */
-    statusChangedAt?: string;
+    status_changed_at?: string;
     /**
      *
      * @type {number}
      * @memberof ExecutionExecution
      */
-    statusId?: number;
+    status_id?: number;
     /**
      *
      * @type {Array<TestcaseCaseStep>}
@@ -261,7 +261,7 @@ export interface ExecutionExecution {
      * @type {string}
      * @memberof ExecutionExecution
      */
-    updatedAt?: string;
+    updated_at?: string;
 }
 
 /**
@@ -301,7 +301,7 @@ export interface ModelAddActionToTestDto {
      * @type {number}
      * @memberof ModelAddActionToTestDto
      */
-    statusId?: number;
+    status_id?: number;
 }
 
 /**
@@ -353,13 +353,13 @@ export interface ProjectProjectDto {
      * @type {string}
      * @memberof ProjectProjectDto
      */
-    networkId?: string;
+    network_id?: string;
     /**
      *
      * @type {string}
      * @memberof ProjectProjectDto
      */
-    sprintType?: string;
+    sprint_type?: string;
     /**
      *
      * @type {string}
@@ -385,13 +385,13 @@ export interface TestcaseCase {
      * @type {string}
      * @memberof TestcaseCase
      */
-    createdAt?: string;
+    created_at?: string;
     /**
      *
      * @type {string}
      * @memberof TestcaseCase
      */
-    deletedAt?: string;
+    deleted_at?: string;
     /**
      *
      * @type {number}
@@ -403,7 +403,7 @@ export interface TestcaseCase {
      * @type {string}
      * @memberof TestcaseCase
      */
-    expectedResult?: string;
+    expected_result?: string;
     /**
      *
      * @type {number}
@@ -421,7 +421,7 @@ export interface TestcaseCase {
      * @type {string}
      * @memberof TestcaseCase
      */
-    networkId?: string;
+    network_id?: string;
     /**
      *
      * @type {number}
@@ -445,13 +445,13 @@ export interface TestcaseCase {
      * @type {string}
      * @memberof TestcaseCase
      */
-    projectId?: string;
+    project_id?: string;
     /**
      *
      * @type {number}
      * @memberof TestcaseCase
      */
-    sectionId?: number;
+    section_id?: number;
     /**
      *
      * @type {Array<TestcaseCaseStep>}
@@ -463,7 +463,7 @@ export interface TestcaseCase {
      * @type {string}
      * @memberof TestcaseCase
      */
-    updatedAt?: string;
+    updated_at?: string;
 }
 
 /**
@@ -503,7 +503,7 @@ export interface TestrunCreateTestRunDto {
      * @type {string}
      * @memberof TestrunCreateTestRunDto
      */
-    assignTo?: string;
+    assign_to?: string;
     /**
      *
      * @type {string}
@@ -515,7 +515,7 @@ export interface TestrunCreateTestRunDto {
      * @type {string}
      * @memberof TestrunCreateTestRunDto
      */
-    sprintId?: string;
+    sprint_id?: string;
 }
 
 /**
@@ -529,31 +529,31 @@ export interface TestrunTestRun {
      * @type {string}
      * @memberof TestrunTestRun
      */
-    assignedTo?: string;
+    assigned_to?: string;
     /**
      *
      * @type {string}
      * @memberof TestrunTestRun
      */
-    completedAt?: string;
+    completed_at?: string;
     /**
      *
      * @type {string}
      * @memberof TestrunTestRun
      */
-    createdAt?: string;
+    created_at?: string;
     /**
      *
      * @type {string}
      * @memberof TestrunTestRun
      */
-    createdBy?: string;
+    created_by?: string;
     /**
      *
      * @type {string}
      * @memberof TestrunTestRun
      */
-    deletedAt?: string;
+    deleted_at?: string;
     /**
      *
      * @type {number}
@@ -571,19 +571,19 @@ export interface TestrunTestRun {
      * @type {string}
      * @memberof TestrunTestRun
      */
-    networkId?: string;
+    network_id?: string;
     /**
      *
      * @type {string}
      * @memberof TestrunTestRun
      */
-    projectId?: string;
+    project_id?: string;
     /**
      *
      * @type {string}
      * @memberof TestrunTestRun
      */
-    sprintId?: string;
+    sprint_id?: string;
     /**
      *
      * @type {string}
@@ -595,7 +595,7 @@ export interface TestrunTestRun {
      * @type {string}
      * @memberof TestrunTestRun
      */
-    updatedAt?: string;
+    updated_at?: string;
 }
 
 /**
@@ -609,7 +609,7 @@ export interface TestrunUpdateRunDto {
      * @type {string}
      * @memberof TestrunUpdateRunDto
      */
-    assignTo?: string;
+    assign_to?: string;
     /**
      *
      * @type {string}
@@ -621,7 +621,7 @@ export interface TestrunUpdateRunDto {
      * @type {string}
      * @memberof TestrunUpdateRunDto
      */
-    sprintId?: string;
+    sprint_id?: string;
     /**
      *
      * @type {string}
@@ -647,37 +647,37 @@ export interface UserUser {
      * @type {string}
      * @memberof UserUser
      */
-    firstName?: string;
+    first_name?: string;
     /**
      *
      * @type {boolean}
      * @memberof UserUser
      */
-    isActive?: boolean;
+    is_active?: boolean;
     /**
      *
      * @type {string}
      * @memberof UserUser
      */
-    lastName?: string;
+    last_name?: string;
     /**
      *
      * @type {string}
      * @memberof UserUser
      */
-    networkId?: string;
+    network_id?: string;
     /**
      *
      * @type {number}
      * @memberof UserUser
      */
-    roleId?: number;
+    role_id?: number;
     /**
      *
      * @type {string}
      * @memberof UserUser
      */
-    userId?: string;
+    user_id?: string;
 }
 
 
@@ -733,34 +733,34 @@ export const ActionApiFetchParamCreator = function(configuration?: Configuration
          * Create test action by  testID
          *
          * @summary Create test action by Test ID
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
-         * @param {number} testId ID of test
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
+         * @param {number} test_id ID of test
          * @param {ModelAddActionToTestDto} body Get List of Run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createActionByTestId(projectId: string, runId: number, testId: number, body: ModelAddActionToTestDto, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling createActionByTestId.');
+        createActionByTestId(project_id: string, run_id: number, test_id: number, body: ModelAddActionToTestDto, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createActionByTestId.');
             }
-            // verify required parameter 'runId' is not null or undefined
-            if (runId === null || runId === undefined) {
-                throw new RequiredError('runId','Required parameter runId was null or undefined when calling createActionByTestId.');
+            // verify required parameter 'run_id' is not null or undefined
+            if (run_id === null || run_id === undefined) {
+                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling createActionByTestId.');
             }
-            // verify required parameter 'testId' is not null or undefined
-            if (testId === null || testId === undefined) {
-                throw new RequiredError('testId','Required parameter testId was null or undefined when calling createActionByTestId.');
+            // verify required parameter 'test_id' is not null or undefined
+            if (test_id === null || test_id === undefined) {
+                throw new RequiredError('test_id','Required parameter test_id was null or undefined when calling createActionByTestId.');
             }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createActionByTestId.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}/tests/{test_id}/actions'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${'run_id'}}`, encodeURIComponent(String(runId)))
-                .replace(`{${'test_id'}}`, encodeURIComponent(String(testId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
+                .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)))
+                .replace(`{${'test_id'}}`, encodeURIComponent(String(test_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -820,15 +820,15 @@ export const ActionApiFp = function(configuration?: Configuration) {
          * Create test action by  testID
          *
          * @summary Create test action by Test ID
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
-         * @param {number} testId ID of test
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
+         * @param {number} test_id ID of test
          * @param {ModelAddActionToTestDto} body Get List of Run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createActionByTestId(projectId: string, runId: number, testId: number, body: ModelAddActionToTestDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ActionAction> {
-            const localVarFetchArgs = ActionApiFetchParamCreator(configuration).createActionByTestId(projectId, runId, testId, body, options);
+        createActionByTestId(project_id: string, run_id: number, test_id: number, body: ModelAddActionToTestDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ActionAction> {
+            const localVarFetchArgs = ActionApiFetchParamCreator(configuration).createActionByTestId(project_id, run_id, test_id, body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -862,15 +862,15 @@ export const ActionApiFactory = function(configuration?: Configuration, fetch?: 
          * Create test action by  testID
          *
          * @summary Create test action by Test ID
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
-         * @param {number} testId ID of test
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
+         * @param {number} test_id ID of test
          * @param {ModelAddActionToTestDto} body Get List of Run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createActionByTestId(projectId: string, runId: number, testId: number, body: ModelAddActionToTestDto, options?: any) {
-            return ActionApiFp(configuration).createActionByTestId(projectId, runId, testId, body, options)(fetch, basePath);
+        createActionByTestId(project_id: string, run_id: number, test_id: number, body: ModelAddActionToTestDto, options?: any) {
+            return ActionApiFp(configuration).createActionByTestId(project_id, run_id, test_id, body, options)(fetch, basePath);
         },
     };
 };
@@ -900,16 +900,16 @@ export class ActionApi extends BaseAPI {
      * Create test action by  testID
      *
      * @summary Create test action by Test ID
-     * @param {string} projectId ID of project
-     * @param {number} runId ID of run
-     * @param {number} testId ID of test
+     * @param {string} project_id ID of project
+     * @param {number} run_id ID of run
+     * @param {number} test_id ID of test
      * @param {ModelAddActionToTestDto} body Get List of Run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionApi
      */
-    public createActionByTestId(projectId: string, runId: number, testId: number, body: ModelAddActionToTestDto, options?: any) {
-        return ActionApiFp(this.configuration).createActionByTestId(projectId, runId, testId, body, options)(this.fetch, this.basePath);
+    public createActionByTestId(project_id: string, run_id: number, test_id: number, body: ModelAddActionToTestDto, options?: any) {
+        return ActionApiFp(this.configuration).createActionByTestId(project_id, run_id, test_id, body, options)(this.fetch, this.basePath);
     }
 
 }
@@ -925,17 +925,17 @@ export const CasesApiFetchParamCreator = function(configuration?: Configuration)
          * Get list of test-run by projectID
          *
          * @summary Get list of test cases
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllCasesByProjectId(projectId: string, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling getAllCasesByProjectId.');
+        getAllCasesByProjectId(project_id: string, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getAllCasesByProjectId.');
             }
             const localVarPath = '/projects/{project_id}/cases'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -963,17 +963,17 @@ export const CasesApiFetchParamCreator = function(configuration?: Configuration)
          * Get test case info by caseID
          *
          * @summary Get test case info
-         * @param {number} caseId ID of case to return
+         * @param {number} case_id ID of case to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCaseByCaseId(caseId: number, options: any = {}): FetchArgs {
-            // verify required parameter 'caseId' is not null or undefined
-            if (caseId === null || caseId === undefined) {
-                throw new RequiredError('caseId','Required parameter caseId was null or undefined when calling getCaseByCaseId.');
+        getCaseByCaseId(case_id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'case_id' is not null or undefined
+            if (case_id === null || case_id === undefined) {
+                throw new RequiredError('case_id','Required parameter case_id was null or undefined when calling getCaseByCaseId.');
             }
             const localVarPath = '/projects/{project_id}/cases/{case_id}'
-                .replace(`{${'case_id'}}`, encodeURIComponent(String(caseId)));
+                .replace(`{${'case_id'}}`, encodeURIComponent(String(case_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1011,12 +1011,12 @@ export const CasesApiFp = function(configuration?: Configuration) {
          * Get list of test-run by projectID
          *
          * @summary Get list of test cases
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllCasesByProjectId(projectId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestcaseCase[]> {
-            const localVarFetchArgs = CasesApiFetchParamCreator(configuration).getAllCasesByProjectId(projectId, options);
+        getAllCasesByProjectId(project_id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestcaseCase[]> {
+            const localVarFetchArgs = CasesApiFetchParamCreator(configuration).getAllCasesByProjectId(project_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1029,12 +1029,12 @@ export const CasesApiFp = function(configuration?: Configuration) {
          * Get test case info by caseID
          *
          * @summary Get test case info
-         * @param {number} caseId ID of case to return
+         * @param {number} case_id ID of case to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCaseByCaseId(caseId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestcaseCase> {
-            const localVarFetchArgs = CasesApiFetchParamCreator(configuration).getCaseByCaseId(caseId, options);
+        getCaseByCaseId(case_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestcaseCase> {
+            const localVarFetchArgs = CasesApiFetchParamCreator(configuration).getCaseByCaseId(case_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1057,23 +1057,23 @@ export const CasesApiFactory = function(configuration?: Configuration, fetch?: F
          * Get list of test-run by projectID
          *
          * @summary Get list of test cases
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllCasesByProjectId(projectId: string, options?: any) {
-            return CasesApiFp(configuration).getAllCasesByProjectId(projectId, options)(fetch, basePath);
+        getAllCasesByProjectId(project_id: string, options?: any) {
+            return CasesApiFp(configuration).getAllCasesByProjectId(project_id, options)(fetch, basePath);
         },
         /**
          * Get test case info by caseID
          *
          * @summary Get test case info
-         * @param {number} caseId ID of case to return
+         * @param {number} case_id ID of case to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCaseByCaseId(caseId: number, options?: any) {
-            return CasesApiFp(configuration).getCaseByCaseId(caseId, options)(fetch, basePath);
+        getCaseByCaseId(case_id: number, options?: any) {
+            return CasesApiFp(configuration).getCaseByCaseId(case_id, options)(fetch, basePath);
         },
     };
 };
@@ -1090,26 +1090,26 @@ export class CasesApi extends BaseAPI {
      * Get list of test-run by projectID
      *
      * @summary Get list of test cases
-     * @param {string} projectId ID of project
+     * @param {string} project_id ID of project
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CasesApi
      */
-    public getAllCasesByProjectId(projectId: string, options?: any) {
-        return CasesApiFp(this.configuration).getAllCasesByProjectId(projectId, options)(this.fetch, this.basePath);
+    public getAllCasesByProjectId(project_id: string, options?: any) {
+        return CasesApiFp(this.configuration).getAllCasesByProjectId(project_id, options)(this.fetch, this.basePath);
     }
 
     /**
      * Get test case info by caseID
      *
      * @summary Get test case info
-     * @param {number} caseId ID of case to return
+     * @param {number} case_id ID of case to return
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CasesApi
      */
-    public getCaseByCaseId(caseId: number, options?: any) {
-        return CasesApiFp(this.configuration).getCaseByCaseId(caseId, options)(this.fetch, this.basePath);
+    public getCaseByCaseId(case_id: number, options?: any) {
+        return CasesApiFp(this.configuration).getCaseByCaseId(case_id, options)(this.fetch, this.basePath);
     }
 
 }
@@ -1125,17 +1125,17 @@ export const ProjectApiFetchParamCreator = function(configuration?: Configuratio
          * Get project info by projectID
          *
          * @summary Get project info
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectById(projectId: string, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling getProjectById.');
+        getProjectById(project_id: string, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getProjectById.');
             }
             const localVarPath = '/projects/{project_id}'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1173,12 +1173,12 @@ export const ProjectApiFp = function(configuration?: Configuration) {
          * Get project info by projectID
          *
          * @summary Get project info
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectById(projectId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ProjectProjectDto> {
-            const localVarFetchArgs = ProjectApiFetchParamCreator(configuration).getProjectById(projectId, options);
+        getProjectById(project_id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ProjectProjectDto> {
+            const localVarFetchArgs = ProjectApiFetchParamCreator(configuration).getProjectById(project_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1201,12 +1201,12 @@ export const ProjectApiFactory = function(configuration?: Configuration, fetch?:
          * Get project info by projectID
          *
          * @summary Get project info
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getProjectById(projectId: string, options?: any) {
-            return ProjectApiFp(configuration).getProjectById(projectId, options)(fetch, basePath);
+        getProjectById(project_id: string, options?: any) {
+            return ProjectApiFp(configuration).getProjectById(project_id, options)(fetch, basePath);
         },
     };
 };
@@ -1223,13 +1223,13 @@ export class ProjectApi extends BaseAPI {
      * Get project info by projectID
      *
      * @summary Get project info
-     * @param {string} projectId ID of project
+     * @param {string} project_id ID of project
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ProjectApi
      */
-    public getProjectById(projectId: string, options?: any) {
-        return ProjectApiFp(this.configuration).getProjectById(projectId, options)(this.fetch, this.basePath);
+    public getProjectById(project_id: string, options?: any) {
+        return ProjectApiFp(this.configuration).getProjectById(project_id, options)(this.fetch, this.basePath);
     }
 
 }
@@ -1245,23 +1245,23 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
          * Close test run
          *
          * @summary Close test run
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        closeRunById(projectId: string, runId: number, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling closeRunById.');
+        closeRunById(project_id: string, run_id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling closeRunById.');
             }
-            // verify required parameter 'runId' is not null or undefined
-            if (runId === null || runId === undefined) {
-                throw new RequiredError('runId','Required parameter runId was null or undefined when calling closeRunById.');
+            // verify required parameter 'run_id' is not null or undefined
+            if (run_id === null || run_id === undefined) {
+                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling closeRunById.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}/close'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${'run_id'}}`, encodeURIComponent(String(runId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
+                .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1289,22 +1289,22 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
          * Create test run
          *
          * @summary Create test run
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {TestrunCreateTestRunDto} body Close Run Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRun(projectId: string, body: TestrunCreateTestRunDto, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling createRun.');
+        createRun(project_id: string, body: TestrunCreateTestRunDto, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createRun.');
             }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling createRun.');
             }
             const localVarPath = '/projects/{project_id}/runs'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1336,17 +1336,17 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
          * Get list of test-run by projectID
          *
          * @summary Get list of test-run
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllRunsByProjectId(projectId: string, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling getAllRunsByProjectId.');
+        getAllRunsByProjectId(project_id: string, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getAllRunsByProjectId.');
             }
             const localVarPath = '/projects/{project_id}/runs'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1374,23 +1374,23 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
          * Get run info by ID
          *
          * @summary Get run info by ID
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRunById(projectId: string, runId: number, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling getRunById.');
+        getRunById(project_id: string, run_id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getRunById.');
             }
-            // verify required parameter 'runId' is not null or undefined
-            if (runId === null || runId === undefined) {
-                throw new RequiredError('runId','Required parameter runId was null or undefined when calling getRunById.');
+            // verify required parameter 'run_id' is not null or undefined
+            if (run_id === null || run_id === undefined) {
+                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling getRunById.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${'run_id'}}`, encodeURIComponent(String(runId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
+                .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1418,28 +1418,28 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
          * Update test-run info by ID
          *
          * @summary Update test-run info
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {TestrunUpdateRunDto} body Update Run Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRunById(projectId: string, runId: number, body: TestrunUpdateRunDto, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling updateRunById.');
+        updateRunById(project_id: string, run_id: number, body: TestrunUpdateRunDto, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling updateRunById.');
             }
-            // verify required parameter 'runId' is not null or undefined
-            if (runId === null || runId === undefined) {
-                throw new RequiredError('runId','Required parameter runId was null or undefined when calling updateRunById.');
+            // verify required parameter 'run_id' is not null or undefined
+            if (run_id === null || run_id === undefined) {
+                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling updateRunById.');
             }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling updateRunById.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${'run_id'}}`, encodeURIComponent(String(runId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
+                .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1481,13 +1481,13 @@ export const RunsApiFp = function(configuration?: Configuration) {
          * Close test run
          *
          * @summary Close test run
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        closeRunById(projectId: string, runId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
-            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).closeRunById(projectId, runId, options);
+        closeRunById(project_id: string, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
+            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).closeRunById(project_id, run_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1500,13 +1500,13 @@ export const RunsApiFp = function(configuration?: Configuration) {
          * Create test run
          *
          * @summary Create test run
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {TestrunCreateTestRunDto} body Close Run Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRun(projectId: string, body: TestrunCreateTestRunDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
-            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).createRun(projectId, body, options);
+        createRun(project_id: string, body: TestrunCreateTestRunDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
+            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).createRun(project_id, body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1519,12 +1519,12 @@ export const RunsApiFp = function(configuration?: Configuration) {
          * Get list of test-run by projectID
          *
          * @summary Get list of test-run
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllRunsByProjectId(projectId: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun[]> {
-            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).getAllRunsByProjectId(projectId, options);
+        getAllRunsByProjectId(project_id: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun[]> {
+            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).getAllRunsByProjectId(project_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1537,13 +1537,13 @@ export const RunsApiFp = function(configuration?: Configuration) {
          * Get run info by ID
          *
          * @summary Get run info by ID
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRunById(projectId: string, runId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
-            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).getRunById(projectId, runId, options);
+        getRunById(project_id: string, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
+            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).getRunById(project_id, run_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1556,14 +1556,14 @@ export const RunsApiFp = function(configuration?: Configuration) {
          * Update test-run info by ID
          *
          * @summary Update test-run info
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {TestrunUpdateRunDto} body Update Run Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRunById(projectId: string, runId: number, body: TestrunUpdateRunDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
-            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).updateRunById(projectId, runId, body, options);
+        updateRunById(project_id: string, run_id: number, body: TestrunUpdateRunDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TestrunTestRun> {
+            const localVarFetchArgs = RunsApiFetchParamCreator(configuration).updateRunById(project_id, run_id, body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1586,61 +1586,61 @@ export const RunsApiFactory = function(configuration?: Configuration, fetch?: Fe
          * Close test run
          *
          * @summary Close test run
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        closeRunById(projectId: string, runId: number, options?: any) {
-            return RunsApiFp(configuration).closeRunById(projectId, runId, options)(fetch, basePath);
+        closeRunById(project_id: string, run_id: number, options?: any) {
+            return RunsApiFp(configuration).closeRunById(project_id, run_id, options)(fetch, basePath);
         },
         /**
          * Create test run
          *
          * @summary Create test run
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {TestrunCreateTestRunDto} body Close Run Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createRun(projectId: string, body: TestrunCreateTestRunDto, options?: any) {
-            return RunsApiFp(configuration).createRun(projectId, body, options)(fetch, basePath);
+        createRun(project_id: string, body: TestrunCreateTestRunDto, options?: any) {
+            return RunsApiFp(configuration).createRun(project_id, body, options)(fetch, basePath);
         },
         /**
          * Get list of test-run by projectID
          *
          * @summary Get list of test-run
-         * @param {string} projectId ID of project
+         * @param {string} project_id ID of project
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllRunsByProjectId(projectId: string, options?: any) {
-            return RunsApiFp(configuration).getAllRunsByProjectId(projectId, options)(fetch, basePath);
+        getAllRunsByProjectId(project_id: string, options?: any) {
+            return RunsApiFp(configuration).getAllRunsByProjectId(project_id, options)(fetch, basePath);
         },
         /**
          * Get run info by ID
          *
          * @summary Get run info by ID
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRunById(projectId: string, runId: number, options?: any) {
-            return RunsApiFp(configuration).getRunById(projectId, runId, options)(fetch, basePath);
+        getRunById(project_id: string, run_id: number, options?: any) {
+            return RunsApiFp(configuration).getRunById(project_id, run_id, options)(fetch, basePath);
         },
         /**
          * Update test-run info by ID
          *
          * @summary Update test-run info
-         * @param {string} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {string} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {TestrunUpdateRunDto} body Update Run Request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateRunById(projectId: string, runId: number, body: TestrunUpdateRunDto, options?: any) {
-            return RunsApiFp(configuration).updateRunById(projectId, runId, body, options)(fetch, basePath);
+        updateRunById(project_id: string, run_id: number, body: TestrunUpdateRunDto, options?: any) {
+            return RunsApiFp(configuration).updateRunById(project_id, run_id, body, options)(fetch, basePath);
         },
     };
 };
@@ -1657,70 +1657,70 @@ export class RunsApi extends BaseAPI {
      * Close test run
      *
      * @summary Close test run
-     * @param {string} projectId ID of project
-     * @param {number} runId ID of run
+     * @param {string} project_id ID of project
+     * @param {number} run_id ID of run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RunsApi
      */
-    public closeRunById(projectId: string, runId: number, options?: any) {
-        return RunsApiFp(this.configuration).closeRunById(projectId, runId, options)(this.fetch, this.basePath);
+    public closeRunById(project_id: string, run_id: number, options?: any) {
+        return RunsApiFp(this.configuration).closeRunById(project_id, run_id, options)(this.fetch, this.basePath);
     }
 
     /**
      * Create test run
      *
      * @summary Create test run
-     * @param {string} projectId ID of project
+     * @param {string} project_id ID of project
      * @param {TestrunCreateTestRunDto} body Close Run Request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RunsApi
      */
-    public createRun(projectId: string, body: TestrunCreateTestRunDto, options?: any) {
-        return RunsApiFp(this.configuration).createRun(projectId, body, options)(this.fetch, this.basePath);
+    public createRun(project_id: string, body: TestrunCreateTestRunDto, options?: any) {
+        return RunsApiFp(this.configuration).createRun(project_id, body, options)(this.fetch, this.basePath);
     }
 
     /**
      * Get list of test-run by projectID
      *
      * @summary Get list of test-run
-     * @param {string} projectId ID of project
+     * @param {string} project_id ID of project
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RunsApi
      */
-    public getAllRunsByProjectId(projectId: string, options?: any) {
-        return RunsApiFp(this.configuration).getAllRunsByProjectId(projectId, options)(this.fetch, this.basePath);
+    public getAllRunsByProjectId(project_id: string, options?: any) {
+        return RunsApiFp(this.configuration).getAllRunsByProjectId(project_id, options)(this.fetch, this.basePath);
     }
 
     /**
      * Get run info by ID
      *
      * @summary Get run info by ID
-     * @param {string} projectId ID of project
-     * @param {number} runId ID of run
+     * @param {string} project_id ID of project
+     * @param {number} run_id ID of run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RunsApi
      */
-    public getRunById(projectId: string, runId: number, options?: any) {
-        return RunsApiFp(this.configuration).getRunById(projectId, runId, options)(this.fetch, this.basePath);
+    public getRunById(project_id: string, run_id: number, options?: any) {
+        return RunsApiFp(this.configuration).getRunById(project_id, run_id, options)(this.fetch, this.basePath);
     }
 
     /**
      * Update test-run info by ID
      *
      * @summary Update test-run info
-     * @param {string} projectId ID of project
-     * @param {number} runId ID of run
+     * @param {string} project_id ID of project
+     * @param {number} run_id ID of run
      * @param {TestrunUpdateRunDto} body Update Run Request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof RunsApi
      */
-    public updateRunById(projectId: string, runId: number, body: TestrunUpdateRunDto, options?: any) {
-        return RunsApiFp(this.configuration).updateRunById(projectId, runId, body, options)(this.fetch, this.basePath);
+    public updateRunById(project_id: string, run_id: number, body: TestrunUpdateRunDto, options?: any) {
+        return RunsApiFp(this.configuration).updateRunById(project_id, run_id, body, options)(this.fetch, this.basePath);
     }
 
 }
@@ -1736,23 +1736,23 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * Create test by caseID
          *
          * @summary Create test in run
-         * @param {number} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {number} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(projectId: number, runId: number, options: any = {}): FetchArgs {
-            // verify required parameter 'projectId' is not null or undefined
-            if (projectId === null || projectId === undefined) {
-                throw new RequiredError('projectId','Required parameter projectId was null or undefined when calling createTestByCaseId.');
+        createTestByCaseId(project_id: number, run_id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createTestByCaseId.');
             }
-            // verify required parameter 'runId' is not null or undefined
-            if (runId === null || runId === undefined) {
-                throw new RequiredError('runId','Required parameter runId was null or undefined when calling createTestByCaseId.');
+            // verify required parameter 'run_id' is not null or undefined
+            if (run_id === null || run_id === undefined) {
+                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling createTestByCaseId.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}/tests'
-                .replace(`{${'project_id'}}`, encodeURIComponent(String(projectId)))
-                .replace(`{${'run_id'}}`, encodeURIComponent(String(runId)));
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
+                .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1780,17 +1780,17 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
-         * @param {number} runId ID of run
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(runId: number, options: any = {}): FetchArgs {
-            // verify required parameter 'runId' is not null or undefined
-            if (runId === null || runId === undefined) {
-                throw new RequiredError('runId','Required parameter runId was null or undefined when calling getTestsListByRunId.');
+        getTestsListByRunId(run_id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'run_id' is not null or undefined
+            if (run_id === null || run_id === undefined) {
+                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling getTestsListByRunId.');
             }
             const localVarPath = '/tests/list/run/:run_id'
-                .replace(`{${'run_id'}}`, encodeURIComponent(String(runId)));
+                .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
@@ -1828,13 +1828,13 @@ export const TestsApiFp = function(configuration?: Configuration) {
          * Create test by caseID
          *
          * @summary Create test in run
-         * @param {number} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {number} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(projectId: number, runId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
-            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).createTestByCaseId(projectId, runId, options);
+        createTestByCaseId(project_id: number, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
+            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).createTestByCaseId(project_id, run_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1847,12 +1847,12 @@ export const TestsApiFp = function(configuration?: Configuration) {
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
-         * @param {number} runId ID of run
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(runId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution[]> {
-            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).getTestsListByRunId(runId, options);
+        getTestsListByRunId(run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution[]> {
+            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).getTestsListByRunId(run_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1875,24 +1875,24 @@ export const TestsApiFactory = function(configuration?: Configuration, fetch?: F
          * Create test by caseID
          *
          * @summary Create test in run
-         * @param {number} projectId ID of project
-         * @param {number} runId ID of run
+         * @param {number} project_id ID of project
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(projectId: number, runId: number, options?: any) {
-            return TestsApiFp(configuration).createTestByCaseId(projectId, runId, options)(fetch, basePath);
+        createTestByCaseId(project_id: number, run_id: number, options?: any) {
+            return TestsApiFp(configuration).createTestByCaseId(project_id, run_id, options)(fetch, basePath);
         },
         /**
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
-         * @param {number} runId ID of run
+         * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(runId: number, options?: any) {
-            return TestsApiFp(configuration).getTestsListByRunId(runId, options)(fetch, basePath);
+        getTestsListByRunId(run_id: number, options?: any) {
+            return TestsApiFp(configuration).getTestsListByRunId(run_id, options)(fetch, basePath);
         },
     };
 };
@@ -1909,27 +1909,27 @@ export class TestsApi extends BaseAPI {
      * Create test by caseID
      *
      * @summary Create test in run
-     * @param {number} projectId ID of project
-     * @param {number} runId ID of run
+     * @param {number} project_id ID of project
+     * @param {number} run_id ID of run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    public createTestByCaseId(projectId: number, runId: number, options?: any) {
-        return TestsApiFp(this.configuration).createTestByCaseId(projectId, runId, options)(this.fetch, this.basePath);
+    public createTestByCaseId(project_id: number, run_id: number, options?: any) {
+        return TestsApiFp(this.configuration).createTestByCaseId(project_id, run_id, options)(this.fetch, this.basePath);
     }
 
     /**
      * Get tests list by RunId
      *
      * @summary Get list of tests in test run
-     * @param {number} runId ID of run
+     * @param {number} run_id ID of run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    public getTestsListByRunId(runId: number, options?: any) {
-        return TestsApiFp(this.configuration).getTestsListByRunId(runId, options)(this.fetch, this.basePath);
+    public getTestsListByRunId(run_id: number, options?: any) {
+        return TestsApiFp(this.configuration).getTestsListByRunId(run_id, options)(this.fetch, this.basePath);
     }
 
 }
@@ -1977,17 +1977,17 @@ export const UsersApiFetchParamCreator = function(configuration?: Configuration)
          * Get user info by ID
          *
          * @summary Get user by ID
-         * @param {number} userId ID of user to return
+         * @param {number} user_id ID of user to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userById(userId: number, options: any = {}): FetchArgs {
-            // verify required parameter 'userId' is not null or undefined
-            if (userId === null || userId === undefined) {
-                throw new RequiredError('userId','Required parameter userId was null or undefined when calling userById.');
+        userById(user_id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'user_id' is not null or undefined
+            if (user_id === null || user_id === undefined) {
+                throw new RequiredError('user_id','Required parameter user_id was null or undefined when calling userById.');
             }
             const localVarPath = '/users/{user_id}'
-                .replace(`{${'user_id'}}`, encodeURIComponent(String(userId)));
+                .replace(`{${'user_id'}}`, encodeURIComponent(String(user_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -2042,12 +2042,12 @@ export const UsersApiFp = function(configuration?: Configuration) {
          * Get user info by ID
          *
          * @summary Get user by ID
-         * @param {number} userId ID of user to return
+         * @param {number} user_id ID of user to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userById(userId: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UserUser> {
-            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).userById(userId, options);
+        userById(user_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UserUser> {
+            const localVarFetchArgs = UsersApiFetchParamCreator(configuration).userById(user_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -2080,12 +2080,12 @@ export const UsersApiFactory = function(configuration?: Configuration, fetch?: F
          * Get user info by ID
          *
          * @summary Get user by ID
-         * @param {number} userId ID of user to return
+         * @param {number} user_id ID of user to return
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userById(userId: number, options?: any) {
-            return UsersApiFp(configuration).userById(userId, options)(fetch, basePath);
+        userById(user_id: number, options?: any) {
+            return UsersApiFp(configuration).userById(user_id, options)(fetch, basePath);
         },
     };
 };
@@ -2114,13 +2114,13 @@ export class UsersApi extends BaseAPI {
      * Get user info by ID
      *
      * @summary Get user by ID
-     * @param {number} userId ID of user to return
+     * @param {number} user_id ID of user to return
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public userById(userId: number, options?: any) {
-        return UsersApiFp(this.configuration).userById(userId, options)(this.fetch, this.basePath);
+    public userById(user_id: number, options?: any) {
+        return UsersApiFp(this.configuration).userById(user_id, options)(this.fetch, this.basePath);
     }
 
 }

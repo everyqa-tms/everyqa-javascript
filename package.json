@@ -21,7 +21,7 @@
     "client"
   ],
   "scripts": {
-    "lint": "eslint --fix src/**",
+    "lint": "eslint --fix ./src/**",
     "build": "rimraf dist && npm run lint && tsc",
     "prepublish": "npm run build",
     "clean": "rm -rf dist || true"

@@ -50,15 +50,16 @@ module.exports = {
                 }
             }
         ],
-        "@typescript-eslint/consistent-type-assertions": "error",
+        "@typescript-eslint/consistent-type-assertions": "off",
         "@typescript-eslint/consistent-type-definitions": "error",
         "@typescript-eslint/dot-notation": "error",
         "@typescript-eslint/explicit-member-accessibility": [
-            "error",
+            "off",
             {
                 "accessibility": "explicit"
             }
         ],
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/indent": [
             "error",
             4,
@@ -91,11 +92,14 @@ module.exports = {
         "@typescript-eslint/no-misused-new": "error",
         "@typescript-eslint/no-namespace": "error",
         "@typescript-eslint/no-parameter-properties": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unused-expressions": "error",
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-var-requires": "error",
         "@typescript-eslint/prefer-for-of": "error",
-        "@typescript-eslint/prefer-function-type": "error",
+        "@typescript-eslint/prefer-function-type": "off",
         "@typescript-eslint/prefer-namespace-keyword": "error",
         "@typescript-eslint/quotes": [
             "error",
@@ -127,7 +131,7 @@ module.exports = {
             "error",
             "1tbs"
         ],
-        "camelcase": "error",
+        "camelcase": "off",
         "comma-dangle": [
             "error",
             "always-multiline"
@@ -161,7 +165,7 @@ module.exports = {
             "off"
         ],
         "max-len": [
-            "error",
+            "off",
             {
                 "code": 120
             }
@@ -228,7 +232,7 @@ module.exports = {
             "error",
             "never"
         ],
-        "prefer-arrow/prefer-arrow-functions": "error",
+        "prefer-arrow/prefer-arrow-functions": "off",
         "prefer-const": "error",
         "quote-props": [
             "error",
@@ -262,5 +266,9 @@ module.exports = {
         ],
         "use-isnan": "error",
         "valid-typeof": "off",
-    }
+    },
+    "ignorePatterns": [
+        "**/*.js",
+        "**/*.map",
+    ],
 };

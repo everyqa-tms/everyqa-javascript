@@ -1,4 +1,3 @@
-/* eslint-disable */
 /**
  * EveryQA Public API
  * Documentation for EveryQA Public API # Authentication  EveryQA Public API offers only one form of authentication: - Bearer API Token

@@ -1,8 +1,6 @@
-// tslint:disable
 /**
  * EveryQA Public API
- * Documentation for EveryQA Public API # Authentication
- * EveryQA Public API offers only one form of authentication: - Bearer API Token
+ * Documentation for EveryQA Public API # Authentication  EveryQA Public API offers only one form of authentication: - Bearer API Token
  *
  * OpenAPI spec version: 0.1
  * Contact: support@everyqa.io
