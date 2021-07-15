@@ -1239,7 +1239,7 @@ exports.TestsApiFetchParamCreator = function (configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId: function (project_id, run_id, options) {
+        getTestsListByRunId: function (run_id, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {

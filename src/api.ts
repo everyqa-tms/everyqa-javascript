@@ -12,7 +12,7 @@
 
 
 import * as url from 'url';
-import { Configuration } from './configuration';
+import {Configuration} from './configuration';
 import portableFetch from 'portable-fetch';
 
 const BASE_PATH = 'https://api.everyqa.io/v1'.replace(/\/+$/, '');
@@ -69,6 +69,7 @@ export class BaseAPI {
  */
 export class RequiredError extends Error {
     name = 'RequiredError';
+
     constructor(public field: string, msg?: string) {
         super(msg);
     }
@@ -302,6 +303,20 @@ export interface ModelAddActionToTestDto {
      * @memberof ModelAddActionToTestDto
      */
     status_id?: number;
+}
+
+/**
+ *
+ * @export
+ * @interface ModelAddTestToRunDto
+ */
+export interface ModelAddTestToRunDto {
+    /**
+     *
+     * @type {Array<number>}
+     * @memberof ModelAddTestToRunDto
+     */
+    case_ids?: number;
 }
 
 /**
@@ -701,21 +716,21 @@ export const ActionApiFetchParamCreator = function(configuration?: Configuration
         createActionByCaseId(project_id: string, case_id: number, body: ModelResultToTestDto, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createActionByCaseId.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling createActionByCaseId.');
             }
             // verify required parameter 'case_id' is not null or undefined
             if (case_id === null || case_id === undefined) {
-                throw new RequiredError('case_id','Required parameter case_id was null or undefined when calling createActionByCaseId.');
+                throw new RequiredError('case_id', 'Required parameter case_id was null or undefined when calling createActionByCaseId.');
             }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createActionByCaseId.');
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling createActionByCaseId.');
             }
             const localVarPath = '/projects/{project_id}/cases/{case_id}/actions'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
                 .replace(`{${'case_id'}}`, encodeURIComponent(String(case_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarRequestOptions = Object.assign({method: 'POST'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -734,7 +749,7 @@ export const ActionApiFetchParamCreator = function(configuration?: Configuration
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>'ModelResultToTestDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || '');
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
 
             return {
                 url: url.format(localVarUrlObj),
@@ -755,26 +770,26 @@ export const ActionApiFetchParamCreator = function(configuration?: Configuration
         createActionByTestId(project_id: string, run_id: number, test_id: number, body: ModelAddActionToTestDto, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createActionByTestId.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling createActionByTestId.');
             }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
-                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling createActionByTestId.');
+                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling createActionByTestId.');
             }
             // verify required parameter 'test_id' is not null or undefined
             if (test_id === null || test_id === undefined) {
-                throw new RequiredError('test_id','Required parameter test_id was null or undefined when calling createActionByTestId.');
+                throw new RequiredError('test_id', 'Required parameter test_id was null or undefined when calling createActionByTestId.');
             }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createActionByTestId.');
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling createActionByTestId.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}/tests/{test_id}/actions'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
                 .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)))
                 .replace(`{${'test_id'}}`, encodeURIComponent(String(test_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarRequestOptions = Object.assign({method: 'POST'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -793,7 +808,7 @@ export const ActionApiFetchParamCreator = function(configuration?: Configuration
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>'ModelAddActionToTestDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || '');
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
 
             return {
                 url: url.format(localVarUrlObj),
@@ -950,12 +965,12 @@ export const CasesApiFetchParamCreator = function(configuration?: Configuration)
         getAllCasesByProjectId(project_id: string, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getAllCasesByProjectId.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling getAllCasesByProjectId.');
             }
             const localVarPath = '/projects/{project_id}/cases'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -988,12 +1003,12 @@ export const CasesApiFetchParamCreator = function(configuration?: Configuration)
         getCaseByCaseId(case_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'case_id' is not null or undefined
             if (case_id === null || case_id === undefined) {
-                throw new RequiredError('case_id','Required parameter case_id was null or undefined when calling getCaseByCaseId.');
+                throw new RequiredError('case_id', 'Required parameter case_id was null or undefined when calling getCaseByCaseId.');
             }
             const localVarPath = '/projects/{project_id}/cases/{case_id}'
                 .replace(`{${'case_id'}}`, encodeURIComponent(String(case_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1150,12 +1165,12 @@ export const ProjectApiFetchParamCreator = function(configuration?: Configuratio
         getProjectById(project_id: string, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getProjectById.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling getProjectById.');
             }
             const localVarPath = '/projects/{project_id}'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1271,17 +1286,17 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
         closeRunById(project_id: string, run_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling closeRunById.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling closeRunById.');
             }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
-                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling closeRunById.');
+                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling closeRunById.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}/close'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
                 .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarRequestOptions = Object.assign({method: 'POST'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1315,16 +1330,16 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
         createRun(project_id: string, body: TestrunCreateTestRunDto, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createRun.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling createRun.');
             }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling createRun.');
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling createRun.');
             }
             const localVarPath = '/projects/{project_id}/runs'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarRequestOptions = Object.assign({method: 'POST'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1343,7 +1358,7 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>'TestrunCreateTestRunDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || '');
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1361,12 +1376,12 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
         getAllRunsByProjectId(project_id: string, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getAllRunsByProjectId.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling getAllRunsByProjectId.');
             }
             const localVarPath = '/projects/{project_id}/runs'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1400,17 +1415,17 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
         getRunById(project_id: string, run_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling getRunById.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling getRunById.');
             }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
-                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling getRunById.');
+                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling getRunById.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
                 .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1445,21 +1460,21 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
         updateRunById(project_id: string, run_id: number, body: TestrunUpdateRunDto, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling updateRunById.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling updateRunById.');
             }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
-                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling updateRunById.');
+                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling updateRunById.');
             }
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling updateRunById.');
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling updateRunById.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
                 .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+            const localVarRequestOptions = Object.assign({method: 'PATCH'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1478,7 +1493,7 @@ export const RunsApiFetchParamCreator = function(configuration?: Configuration) 
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             const needsSerialization = (<any>'TestrunUpdateRunDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || '');
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1751,28 +1766,33 @@ export class RunsApi extends BaseAPI {
 export const TestsApiFetchParamCreator = function(configuration?: Configuration) {
     return {
         /**
-         * Create test by caseID
+         * Create tests by caseIDs
          *
          * @summary Create test in run
          * @param {number} project_id ID of project
          * @param {number} run_id ID of run
+         * @param {ModelAddTestToRunDto} body Create tests in run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(project_id: string, run_id: number, options: any = {}): FetchArgs {
+        createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createTestByCaseId.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling createTestsByCaseIds.');
             }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
-                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling createTestByCaseId.');
+                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling createTestsByCaseIds.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling createTestsByCaseIds.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}/tests'
                 .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
                 .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarRequestOptions = Object.assign({method: 'POST'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1784,10 +1804,14 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
                 localVarHeaderParameter.Authorization = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>'ModelAddTestToRunDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1798,19 +1822,25 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
+         * @param {number} project_id ID of project
          * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(run_id: number, options: any = {}): FetchArgs {
+        getTestsListByRunId(project_id: number, run_id: number, options: any = {}): FetchArgs {
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling getTestsListByRunId.');
+            }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
-                throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling getTestsListByRunId.');
+                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling getTestsListByRunId.');
             }
             const localVarPath = '/projects/{project_id}/runs/{run_id}/tests'
+                .replace(`{${'project_id'}}`, encodeURIComponent(String(project_id)))
                 .replace(`{${'run_id'}}`, encodeURIComponent(String(run_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1843,16 +1873,17 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
 export const TestsApiFp = function(configuration?: Configuration) {
     return {
         /**
-         * Create test by caseID
+         * Create tests by caseIDs
          *
          * @summary Create test in run
          * @param {number} project_id ID of project
          * @param {number} run_id ID of run
+         * @param {ModelAddTestToRunDto} body Create tests in run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(project_id: string, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
-            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).createTestByCaseId(project_id, run_id, options);
+        createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
+            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).createTestsByCaseIds(project_id, run_id, body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1865,12 +1896,13 @@ export const TestsApiFp = function(configuration?: Configuration) {
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
+         * @param {number} project_id ID of project
          * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution[]> {
-            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).getTestsListByRunId(run_id, options);
+        getTestsListByRunId(project_id: number, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution[]> {
+            const localVarFetchArgs = TestsApiFetchParamCreator(configuration).getTestsListByRunId(project_id, run_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
                     return response.json();
@@ -1890,27 +1922,29 @@ export const TestsApiFp = function(configuration?: Configuration) {
 export const TestsApiFactory = function(configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
     return {
         /**
-         * Create test by caseID
+         * Create tests by caseIDs
          *
          * @summary Create test in run
          * @param {number} project_id ID of project
          * @param {number} run_id ID of run
+         * @param {ModelAddTestToRunDto} body Create tests in run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(project_id: string, run_id: number, options?: any) {
-            return TestsApiFp(configuration).createTestByCaseId(project_id, run_id, options)(fetch, basePath);
+        createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options?: any) {
+            return TestsApiFp(configuration).createTestsByCaseIds(project_id, run_id, body, options)(fetch, basePath);
         },
         /**
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
+         * @param {number} project_id ID of project
          * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(run_id: number, options?: any) {
-            return TestsApiFp(configuration).getTestsListByRunId(run_id, options)(fetch, basePath);
+        getTestsListByRunId(project_id: number, run_id: number, options?: any) {
+            return TestsApiFp(configuration).getTestsListByRunId(project_id, run_id, options)(fetch, basePath);
         },
     };
 };
@@ -1924,30 +1958,32 @@ export const TestsApiFactory = function(configuration?: Configuration, fetch?: F
  */
 export class TestsApi extends BaseAPI {
     /**
-     * Create test by caseID
+     * Create tests by caseIDs
      *
      * @summary Create test in run
      * @param {number} project_id ID of project
      * @param {number} run_id ID of run
+     * @param {ModelAddTestToRunDto} body Create tests in run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    public createTestByCaseId(project_id: string, run_id: number, options?: any) {
-        return TestsApiFp(this.configuration).createTestByCaseId(project_id, run_id, options)(this.fetch, this.basePath);
+    public createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options?: any) {
+        return TestsApiFp(this.configuration).createTestsByCaseIds(project_id, run_id, body, options)(this.fetch, this.basePath);
     }
 
     /**
      * Get tests list by RunId
      *
      * @summary Get list of tests in test run
+     * @param {number} project_id ID of project
      * @param {number} run_id ID of run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    public getTestsListByRunId(run_id: number, options?: any) {
-        return TestsApiFp(this.configuration).getTestsListByRunId(run_id, options)(this.fetch, this.basePath);
+    public getTestsListByRunId(project_id: number, run_id: number, options?: any) {
+        return TestsApiFp(this.configuration).getTestsListByRunId(project_id, run_id, options)(this.fetch, this.basePath);
     }
 
 }
@@ -1969,7 +2005,7 @@ export const UsersApiFetchParamCreator = function(configuration?: Configuration)
         user(options: any = {}): FetchArgs {
             const localVarPath = '/users';
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -2002,12 +2038,12 @@ export const UsersApiFetchParamCreator = function(configuration?: Configuration)
         userById(user_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'user_id' is not null or undefined
             if (user_id === null || user_id === undefined) {
-                throw new RequiredError('user_id','Required parameter user_id was null or undefined when calling userById.');
+                throw new RequiredError('user_id', 'Required parameter user_id was null or undefined when calling userById.');
             }
             const localVarPath = '/users/{user_id}'
                 .replace(`{${'user_id'}}`, encodeURIComponent(String(user_id)));
             const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarRequestOptions = Object.assign({method: 'GET'}, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
