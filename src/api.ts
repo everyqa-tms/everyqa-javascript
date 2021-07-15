@@ -316,7 +316,7 @@ export interface ModelAddTestToRunDto {
      * @type {Array<number>}
      * @memberof ModelAddTestToRunDto
      */
-    case_ids?: number;
+    case_ids?: number[];
 }
 
 /**
