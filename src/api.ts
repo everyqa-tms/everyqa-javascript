@@ -1759,7 +1759,7 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(project_id: number, run_id: number, options: any = {}): FetchArgs {
+        createTestByCaseId(project_id: string, run_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
                 throw new RequiredError('project_id','Required parameter project_id was null or undefined when calling createTestByCaseId.');
@@ -1802,7 +1802,7 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(project_id: number, run_id: number, options: any = {}): FetchArgs {
+        getTestsListByRunId(run_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
                 throw new RequiredError('run_id','Required parameter run_id was null or undefined when calling getTestsListByRunId.');
@@ -1851,7 +1851,7 @@ export const TestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(project_id: number, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
+        createTestByCaseId(project_id: string, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
             const localVarFetchArgs = TestsApiFetchParamCreator(configuration).createTestByCaseId(project_id, run_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -1898,7 +1898,7 @@ export const TestsApiFactory = function(configuration?: Configuration, fetch?: F
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId(project_id: number, run_id: number, options?: any) {
+        createTestByCaseId(project_id: string, run_id: number, options?: any) {
             return TestsApiFp(configuration).createTestByCaseId(project_id, run_id, options)(fetch, basePath);
         },
         /**
@@ -1933,7 +1933,7 @@ export class TestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    public createTestByCaseId(project_id: number, run_id: number, options?: any) {
+    public createTestByCaseId(project_id: string, run_id: number, options?: any) {
         return TestsApiFp(this.configuration).createTestByCaseId(project_id, run_id, options)(this.fetch, this.basePath);
     }
 
