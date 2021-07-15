@@ -1,6 +1,6 @@
 {
   "name": "everyqaio",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "EveryQA TMS Javascript Api Client",
   "main": "./dist/everyqaio.js",
   "types": "./dist/everyqaio.d.ts",
