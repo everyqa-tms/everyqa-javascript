@@ -1190,23 +1190,28 @@ exports.RunsApi = RunsApi;
 exports.TestsApiFetchParamCreator = function (configuration) {
     return {
         /**
-         * Create test by caseID
+         * Create tests by caseIDs
          *
          * @summary Create test in run
          * @param {number} project_id ID of project
          * @param {number} run_id ID of run
+         * @param {ModelAddTestToRunDto} body Create tests in run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId: function (project_id, run_id, options) {
+        createTestsByCaseIds: function (project_id, run_id, body, options) {
             if (options === void 0) { options = {}; }
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
-                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling createTestByCaseId.');
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling createTestsByCaseIds.');
             }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
-                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling createTestByCaseId.');
+                throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling createTestsByCaseIds.');
+            }
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body', 'Required parameter body was null or undefined when calling createTestsByCaseIds.');
             }
             var localVarPath = '/projects/{project_id}/runs/{run_id}/tests'
                 .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)))
@@ -1222,10 +1227,13 @@ exports.TestsApiFetchParamCreator = function (configuration) {
                     : configuration.apiKey;
                 localVarHeaderParameter.Authorization = localVarApiKeyValue;
             }
+            localVarHeaderParameter['Content-Type'] = 'application/json';
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            var needsSerialization = ('ModelAddTestToRunDto' !== 'string') || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : (body || '');
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -1235,20 +1243,26 @@ exports.TestsApiFetchParamCreator = function (configuration) {
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
+         * @param {number} project_id ID of project
          * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId: function (run_id, options) {
+        getTestsListByRunId: function (project_id, run_id, options) {
             if (options === void 0) { options = {}; }
+            // verify required parameter 'project_id' is not null or undefined
+            if (project_id === null || project_id === undefined) {
+                throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling getTestsListByRunId.');
+            }
             // verify required parameter 'run_id' is not null or undefined
             if (run_id === null || run_id === undefined) {
                 throw new RequiredError('run_id', 'Required parameter run_id was null or undefined when calling getTestsListByRunId.');
             }
             var localVarPath = '/projects/{project_id}/runs/{run_id}/tests'
+                .replace("{" + 'project_id' + "}", encodeURIComponent(String(project_id)))
                 .replace("{" + 'run_id' + "}", encodeURIComponent(String(run_id)));
             var localVarUrlObj = url.parse(localVarPath, true);
-            var localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            var localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             var localVarHeaderParameter = {};
             var localVarQueryParameter = {};
             // authentication Bearer required
@@ -1277,16 +1291,17 @@ exports.TestsApiFetchParamCreator = function (configuration) {
 exports.TestsApiFp = function (configuration) {
     return {
         /**
-         * Create test by caseID
+         * Create tests by caseIDs
          *
          * @summary Create test in run
          * @param {number} project_id ID of project
          * @param {number} run_id ID of run
+         * @param {ModelAddTestToRunDto} body Create tests in run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId: function (project_id, run_id, options) {
-            var localVarFetchArgs = exports.TestsApiFetchParamCreator(configuration).createTestByCaseId(project_id, run_id, options);
+        createTestsByCaseIds: function (project_id, run_id, body, options) {
+            var localVarFetchArgs = exports.TestsApiFetchParamCreator(configuration).createTestsByCaseIds(project_id, run_id, body, options);
             return function (fetch, basePath) {
                 if (fetch === void 0) { fetch = portable_fetch_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1304,12 +1319,13 @@ exports.TestsApiFp = function (configuration) {
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
+         * @param {number} project_id ID of project
          * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId: function (run_id, options) {
-            var localVarFetchArgs = exports.TestsApiFetchParamCreator(configuration).getTestsListByRunId(run_id, options);
+        getTestsListByRunId: function (project_id, run_id, options) {
+            var localVarFetchArgs = exports.TestsApiFetchParamCreator(configuration).getTestsListByRunId(project_id, run_id, options);
             return function (fetch, basePath) {
                 if (fetch === void 0) { fetch = portable_fetch_1.default; }
                 if (basePath === void 0) { basePath = BASE_PATH; }
@@ -1333,27 +1349,29 @@ exports.TestsApiFp = function (configuration) {
 exports.TestsApiFactory = function (configuration, fetch, basePath) {
     return {
         /**
-         * Create test by caseID
+         * Create tests by caseIDs
          *
          * @summary Create test in run
          * @param {number} project_id ID of project
          * @param {number} run_id ID of run
+         * @param {ModelAddTestToRunDto} body Create tests in run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestByCaseId: function (project_id, run_id, options) {
-            return exports.TestsApiFp(configuration).createTestByCaseId(project_id, run_id, options)(fetch, basePath);
+        createTestsByCaseIds: function (project_id, run_id, body, options) {
+            return exports.TestsApiFp(configuration).createTestsByCaseIds(project_id, run_id, body, options)(fetch, basePath);
         },
         /**
          * Get tests list by RunId
          *
          * @summary Get list of tests in test run
+         * @param {number} project_id ID of project
          * @param {number} run_id ID of run
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId: function (run_id, options) {
-            return exports.TestsApiFp(configuration).getTestsListByRunId(run_id, options)(fetch, basePath);
+        getTestsListByRunId: function (project_id, run_id, options) {
+            return exports.TestsApiFp(configuration).getTestsListByRunId(project_id, run_id, options)(fetch, basePath);
         },
     };
 };
@@ -1370,29 +1388,31 @@ var TestsApi = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * Create test by caseID
+     * Create tests by caseIDs
      *
      * @summary Create test in run
+     * @param {number} project_id ID of project
+     * @param {number} run_id ID of run
+     * @param {ModelAddTestToRunDto} body Create tests in run
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof TestsApi
+     */
+    TestsApi.prototype.createTestsByCaseIds = function (project_id, run_id, body, options) {
+        return exports.TestsApiFp(this.configuration).createTestsByCaseIds(project_id, run_id, body, options)(this.fetch, this.basePath);
+    };
+    /**
+     * Get tests list by RunId
+     *
+     * @summary Get list of tests in test run
      * @param {number} project_id ID of project
      * @param {number} run_id ID of run
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    TestsApi.prototype.createTestByCaseId = function (project_id, run_id, options) {
-        return exports.TestsApiFp(this.configuration).createTestByCaseId(project_id, run_id, options)(this.fetch, this.basePath);
-    };
-    /**
-     * Get tests list by RunId
-     *
-     * @summary Get list of tests in test run
-     * @param {number} run_id ID of run
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof TestsApi
-     */
-    TestsApi.prototype.getTestsListByRunId = function (run_id, options) {
-        return exports.TestsApiFp(this.configuration).getTestsListByRunId(run_id, options)(this.fetch, this.basePath);
+    TestsApi.prototype.getTestsListByRunId = function (project_id, run_id, options) {
+        return exports.TestsApiFp(this.configuration).getTestsListByRunId(project_id, run_id, options)(this.fetch, this.basePath);
     };
     return TestsApi;
 }(BaseAPI));

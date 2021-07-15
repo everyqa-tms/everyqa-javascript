@@ -1775,7 +1775,7 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options: any = {}): FetchArgs {
+        createTestsByCaseIds(project_id: string, run_id: number, body: ModelAddTestToRunDto, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
                 throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling createTestsByCaseIds.');
@@ -1827,7 +1827,7 @@ export const TestsApiFetchParamCreator = function(configuration?: Configuration)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(project_id: number, run_id: number, options: any = {}): FetchArgs {
+        getTestsListByRunId(project_id: string, run_id: number, options: any = {}): FetchArgs {
             // verify required parameter 'project_id' is not null or undefined
             if (project_id === null || project_id === undefined) {
                 throw new RequiredError('project_id', 'Required parameter project_id was null or undefined when calling getTestsListByRunId.');
@@ -1882,7 +1882,7 @@ export const TestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
+        createTestsByCaseIds(project_id: string, run_id: number, body: ModelAddTestToRunDto, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution> {
             const localVarFetchArgs = TestsApiFetchParamCreator(configuration).createTestsByCaseIds(project_id, run_id, body, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -1901,7 +1901,7 @@ export const TestsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(project_id: number, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution[]> {
+        getTestsListByRunId(project_id: string, run_id: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ExecutionExecution[]> {
             const localVarFetchArgs = TestsApiFetchParamCreator(configuration).getTestsListByRunId(project_id, run_id, options);
             return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                 if (response.status >= 200 && response.status < 300) {
@@ -1931,7 +1931,7 @@ export const TestsApiFactory = function(configuration?: Configuration, fetch?: F
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options?: any) {
+        createTestsByCaseIds(project_id: string, run_id: number, body: ModelAddTestToRunDto, options?: any) {
             return TestsApiFp(configuration).createTestsByCaseIds(project_id, run_id, body, options)(fetch, basePath);
         },
         /**
@@ -1943,7 +1943,7 @@ export const TestsApiFactory = function(configuration?: Configuration, fetch?: F
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getTestsListByRunId(project_id: number, run_id: number, options?: any) {
+        getTestsListByRunId(project_id: string, run_id: number, options?: any) {
             return TestsApiFp(configuration).getTestsListByRunId(project_id, run_id, options)(fetch, basePath);
         },
     };
@@ -1968,7 +1968,7 @@ export class TestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    public createTestsByCaseIds(project_id: number, run_id: number, body: ModelAddTestToRunDto, options?: any) {
+    public createTestsByCaseIds(project_id: string, run_id: number, body: ModelAddTestToRunDto, options?: any) {
         return TestsApiFp(this.configuration).createTestsByCaseIds(project_id, run_id, body, options)(this.fetch, this.basePath);
     }
 
@@ -1982,7 +1982,7 @@ export class TestsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof TestsApi
      */
-    public getTestsListByRunId(project_id: number, run_id: number, options?: any) {
+    public getTestsListByRunId(project_id: string, run_id: number, options?: any) {
         return TestsApiFp(this.configuration).getTestsListByRunId(project_id, run_id, options)(this.fetch, this.basePath);
     }
 
