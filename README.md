@@ -5,7 +5,7 @@
 Monorepoitory for all Javascript Projects 
 
 ## Projects
-1. [everyqaio](https://github.com/everyqa-tms/everyqa-javascript/tree/main/everyqa-io "everyqaio") - JavaScript Api Client
+1. [everyqaio](https://github.com/everyqa-tms/everyqa-javascript) - JavaScript Api Client
 2. everyqa-mocha
 3. everyqa-jest
 4. everyqa-jasmine
